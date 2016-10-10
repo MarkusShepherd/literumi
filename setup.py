@@ -12,7 +12,7 @@ dependency_links=[
 setup(
     name='literumi',
     url='https://github.com/MarkusShepherd/literumi',
-    version='0.0.1',
+    version='0.0.2',
     description='spells numbers',
     packages=['literumi'],
     install_requires=install_requires,
