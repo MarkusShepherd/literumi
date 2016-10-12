@@ -4,6 +4,8 @@
 
 from __future__ import absolute_import, unicode_literals
 
+import roman
+
 from num2words import num2words
 
 from . import binary
@@ -12,6 +14,7 @@ from . import esperanto
 LANGUAGES = {
 	'binary': {'name': 'binary', 'function': binary.spell},
 	'eo': {'name': 'Esperanto', 'function': esperanto.spell},
+	'roman': {'name': 'Roman numerals', 'function': roman.toRoman},
 }
 
 def spell(number, lang):
