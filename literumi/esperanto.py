@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-'spells out numbers in Esperanto'
+'''spells out numbers in Esperanto'''
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
@@ -26,14 +26,19 @@ FRAGMENTS = [
     'mil', 'bil', 'tril', 'kvadril', 'kvintil',
     'sekstil', 'septil', 'oktil', 'nonil', 'dekil'
 ]
-for i, fragment in enumerate(FRAGMENTS):
-    exp = (i + 1) * 6
-    NUMBERS[10**exp] = fragment + 'iono'
-    exp += 3
-    NUMBERS[10**exp] = fragment + 'iardo'
+
+def _init():
+    '''initialisations'''
+    for i, fragment in enumerate(FRAGMENTS):
+        exp = (i + 1) * 6
+        NUMBERS[10**exp] = fragment + 'iono'
+        exp += 3
+        NUMBERS[10**exp] = fragment + 'iardo'
+
+_init()
 
 def spell(number, ordinal=False, max_decimals=10):
-    'spell out a number in Esperanto'
+    '''spell out a number in Esperanto'''
 
     if number < 0:
         return 'minus ' + spell(-number)
@@ -88,15 +93,15 @@ def spell(number, ordinal=False, max_decimals=10):
     return result
 
 def main():
-    'main function for testing'
+    '''main function for testing'''
 
     for arg in sys.argv[1:]:
         if '.' in arg:
-            number = float(arg)
-            print('{:13f} {}'.format(number, spell(number)))
+            number_f = float(arg)
+            print('{:13f} {}'.format(number_f, spell(number_f)))
         else:
-            number = int(arg)
-            print('{:13d} {}'.format(number, spell(number)))
+            number_i = int(arg)
+            print('{:13d} {}'.format(number_i, spell(number_i)))
 
 if __name__ == '__main__':
     main()
